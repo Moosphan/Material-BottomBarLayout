@@ -3,6 +3,12 @@ A material navigation bar library which has pretty animations and different ways
 
 >![preview](https://github.com/Moosphan/Material-BottomBarLayout/blob/ab4fbef6617a7c1d8fdb8a46d086e334cf5d49c7/MaterialBottomBar/art/md_bar.gif)
 
+## To-do
+- support `horizontal` and `vertical` style.
+- more animations for tabs.
+- bind with viewpager or other slide views.
+- change bottomBarLayout background when selected.
+
 ## About me
 
 Welcome to improve it with me and give me some issues.
