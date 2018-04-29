@@ -1,7 +1,7 @@
 # Material-BottomBarLayout
 A material navigation bar library which has pretty animations and different ways of arrangement.
 
->![preview](https://github.com/Moosphan/Material-BottomBarLayout/blob/47a2e09254bd102fda40ac5aee016ad834714098/MaterialBottomBar/art/md_bottom_bar.gif)
+>![preview](https://github.com/Moosphan/Material-BottomBarLayout/blob/47a2e09254bd102fda40ac5aee016ad834714098/MaterialBottomBar/art/md_bottom_tab.gif)
 
 ## To-do
 - support `horizontal` and `vertical` style.
