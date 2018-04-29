@@ -4,12 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fafafa"
     tools:context="com.github.moos.MainActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="1dp"
+        android:background="@android:color/black">
+
+        <ImageView
+            android:layout_width="98dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:src="@drawable/eyebrows"/>
+    </android.support.v7.widget.Toolbar>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolBar"
+        android:layout_above="@+id/bottom_bar"/>
 
     <com.github.moos.BottomBarLayout
         android:id="@+id/bottom_bar"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="56dp"
         app:tabs_arrange_way="horizontal"
         android:elevation="2dp"
         android:layout_alignParentBottom="true"/>
