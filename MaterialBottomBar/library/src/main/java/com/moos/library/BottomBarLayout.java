@@ -1,21 +1,16 @@
-package com.github.moos;
+package com.moos.library;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.database.DataSetObserver;
 import android.graphics.Color;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import java.lang.ref.WeakReference;
@@ -196,6 +191,11 @@ public class BottomBarLayout extends LinearLayout {
         return mTabs!=null ? mTabs.size() : 0;
     }
 
+    /**
+     * set call back of tab's selected operation
+     * @param onTabSelectedListener call back
+     * @return
+     */
     public BottomBarLayout create(OnTabSelectedListener onTabSelectedListener) {
         mListener = onTabSelectedListener;
         return this;
@@ -215,8 +215,6 @@ public class BottomBarLayout extends LinearLayout {
                 .start();
     }
 
-
-    TabLayout tabLayout;
 
     /**
      * bind the viewPager and scroll with it
@@ -416,10 +414,6 @@ public class BottomBarLayout extends LinearLayout {
 
         }
     }
-
-
-
-
 
 
 

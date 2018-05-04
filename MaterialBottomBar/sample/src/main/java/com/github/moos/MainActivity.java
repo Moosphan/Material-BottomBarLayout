@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.moos.library.BottomBarLayout;
+import com.moos.library.BottomTabView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,8 +50,16 @@ public class MainActivity extends AppCompatActivity {
         //tab_mine.setBubbleSize(28);
         //tab_mine.setUnreadTextSize(16);
         //tab_mine.setUnreadTextColor(Color.parseColor("#f345f5"));
+        tab_mine.setTabIconOnly(true);
+        tab_home.setTabIconOnly(true);
+        tab_look.setTabIconOnly(true);
+        //tab_mine.setTabTitleOnly(true);
+        //tab_home.setTabTitleOnly(true);
+        //tab_look.setTabTitleOnly(true);
         tab_mine.setTabTitle("Mine");
         tab_mine.setUnreadCount(100);
+
+
         bottomBarLayout
                 .addTab(tab_home)
                 .addTab(tab_look)

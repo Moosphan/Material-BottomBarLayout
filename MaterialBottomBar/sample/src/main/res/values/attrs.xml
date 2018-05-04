@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BottomTabView">
+        <attr name="tab_icon" format="reference"/>
+        <attr name="tab_text" format="string"/>
+        <attr name="tab_selected_color" format="color"/>
+        <attr name="tab_unSelect_color" format="color"/>
+        <attr name="tab_icon_size" format="dimension"/>
+        <attr name="tab_text_size" format="dimension"/>
+        <attr name="tab_padding" format="dimension"/>
+        <attr name="tab_unread_background" format="reference"/>
+        <attr name="tab_bubble_size" format="dimension"/>
+        <attr name="tab_unread_text_color" format="color"/>
+        <attr name="tab_unread_text_size" format="dimension"/>
+        <attr name="tab_unread_text_padding" format="dimension"/>
+        <attr name="tab_icon_only" format="boolean"/>
+        <attr name="tab_text_only" format="boolean"/>
+        <attr name="tab_animation_style" format="enum">
+            <enum name="Scale" value="1"/>
+            <enum name="translate" value="2"/>
+        </attr>
+
+    </declare-styleable>
+    
+    <declare-styleable name="BottomBarLayout">
+
+        <attr name="tabs_arrange_way" format="enum">
+            <enum name="horizontal" value="1"/>
+            <enum name="vertical" value="2"/>
+        </attr>
+        <attr name="tabs_background" format="reference|color"/>
+        <attr name="tabs_animation_enabled" format="boolean"/>
+
+    </declare-styleable>
+
+
+    <dimen name="tab_icon_default_size">22dp</dimen>
+    <dimen name="tab_text_default_size">12sp</dimen>
+    <dimen name="tab_default_padding">3dp</dimen>
+    <dimen name="tab_bubble_default_size">16dp</dimen>
+    <dimen name="tab_unread_text_size">10sp</dimen>
+
+</resources>

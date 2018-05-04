@@ -29,6 +29,7 @@
             <enum name="vertical" value="2"/>
         </attr>
         <attr name="tabs_background" format="reference|color"/>
+        <attr name="tabs_animation_enabled" format="boolean"/>
 
     </declare-styleable>
 

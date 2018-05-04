@@ -26,12 +26,14 @@
         android:layout_below="@+id/toolBar"
         android:layout_above="@+id/bottom_bar"/>
 
-    <com.github.moos.BottomBarLayout
+    <com.moos.library.BottomBarLayout
         android:id="@+id/bottom_bar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         app:tabs_arrange_way="horizontal"
         android:elevation="2dp"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true">
+
+    </com.moos.library.BottomBarLayout>
 
 </RelativeLayout>

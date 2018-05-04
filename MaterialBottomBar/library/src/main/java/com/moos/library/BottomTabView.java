@@ -1,12 +1,9 @@
-package com.github.moos;
+package com.moos.library;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.hardware.Sensor;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
@@ -17,13 +14,10 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by moos on 2018/4/26.
@@ -57,7 +51,7 @@ public class BottomTabView extends FrameLayout {
     /**
      * the size of inner icon
      */
-    private int mTabIconSize = 20;
+    private float mTabIconSize = 20;
     /**
      * the title of tab
      */
@@ -103,6 +97,14 @@ public class BottomTabView extends FrameLayout {
      * the padding of unread text
      */
     private int mUnreadTextPadding = 3;
+    /**
+     * the margin top value of unread bubble
+     */
+    private int mUnreadTextMarginTop = 3;
+    /**
+     * the margin right value of unread bubble
+     */
+    private int mUnreadTextMarginRight = 32;
     /**
      * the counts of unread msg fot tab
      */
@@ -157,7 +159,7 @@ public class BottomTabView extends FrameLayout {
         setBackground(rippleDrawable);
         rippleTypeArray.recycle();
 
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.BottomTabView);
+        /*TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.BottomTabView);
         tabIcon = typedArray.getResourceId(R.styleable.BottomTabView_tab_icon, R.mipmap.ic_launcher);
         tabText = typedArray.getString(R.styleable.BottomTabView_tab_text);
         mTabIconSize = typedArray.getDimensionPixelSize(R.styleable.BottomTabView_tab_icon_size, getResources().getDimensionPixelSize(R.dimen.tab_icon_default_size));
@@ -174,6 +176,7 @@ public class BottomTabView extends FrameLayout {
         isIconOnly = typedArray.getBoolean(R.styleable.BottomTabView_tab_icon_only, false);
         isTitleOnly = typedArray.getBoolean(R.styleable.BottomTabView_tab_text_only, false);
         typedArray.recycle();
+        */
 
         initView(context);
     }
@@ -195,7 +198,7 @@ public class BottomTabView extends FrameLayout {
          * init and add the tab icon into container
          */
         mTabIcon = new ImageView(context);
-        iconParams = new LinearLayout.LayoutParams(mTabIconSize, mTabIconSize);
+        iconParams = new LinearLayout.LayoutParams(dp2px(context, mTabIconSize), dp2px(context, mTabIconSize));
         mTabIcon.setImageResource(tabIcon);
         mTabIcon.setLayoutParams(iconParams);
         mTabIcon.setColorFilter(mUnSelectedColor);
@@ -210,7 +213,7 @@ public class BottomTabView extends FrameLayout {
         titleParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         titleParams.topMargin = dp2px(context, 2);
         mTabTitle.setText(tabText);
-        mTabTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX,mTabTextSize);
+        mTabTitle.setTextSize(mTabTextSize);
         mTabTitle.setTextColor(mUnSelectedColor);
         mTabTitle.setLayoutParams(titleParams);
         tabContainer.addView(mTabTitle);
@@ -223,18 +226,20 @@ public class BottomTabView extends FrameLayout {
          * init and add the unread text into container
          */
         mTabUnreadCount = new TextView(context);
-        mTabUnreadCount.setTextSize(TypedValue.COMPLEX_UNIT_PX, mUnreadTextSize);
+        mTabUnreadCount.setTextSize( mUnreadTextSize);
         mTabUnreadCount.setTextColor(mUnreadTextColor);
         mTabUnreadCount.setGravity(Gravity.CENTER);
-        mTabUnreadCount.setPadding(mUnreadTextPadding, 0, mUnreadTextPadding, 0);
+        mTabUnreadCount.setPadding(dp2px(context, mUnreadTextPadding), 0, dp2px(context, mUnreadTextPadding), 0);
         mTabUnreadCount.setBackgroundResource(mBubbleBackground);
-        unreadParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, mBubbleSize);
+        unreadParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, dp2px(context, mBubbleSize));
         unreadParams.gravity = Gravity.RIGHT;
-        unreadParams.topMargin = dp2px(context,3);
-        unreadParams.rightMargin = dp2px(context, 32);
+        unreadParams.topMargin = dp2px(context,mUnreadTextMarginTop);
+        unreadParams.rightMargin = dp2px(context, mUnreadTextMarginRight);
         mTabUnreadCount.setLayoutParams(unreadParams);
         mTabUnreadCount.setVisibility(View.GONE);
         addView(mTabUnreadCount);
+
+
 
     }
 
@@ -244,12 +249,10 @@ public class BottomTabView extends FrameLayout {
         super.setSelected(selected);
         if(selected){
 
-            //startTabJumpAnimation(300);
             Log.e(TAG, "setSelected: 选中了");
             mTabTitle.setTextColor(mSelectedColor);
             mTabIcon.setColorFilter(mSelectedColor);
         }else {
-            //stopTabJumpAnimation(300);
             mTabTitle.setTextColor(mUnSelectedColor);
             mTabIcon.setColorFilter(mUnSelectedColor);
         }
@@ -419,6 +422,7 @@ public class BottomTabView extends FrameLayout {
     /**
      * weather show the tab title
      * @param iconOnly only show the icon?
+     * [pass-test]
      */
     public void setTabIconOnly(boolean iconOnly){
         this.isIconOnly = iconOnly;
@@ -432,6 +436,7 @@ public class BottomTabView extends FrameLayout {
     /**
      * weather show the tab icon
      * @param textOnly only show the text?
+     * [pass-test]
      */
     public void setTabTitleOnly(boolean textOnly){
         this.isTitleOnly = textOnly;
@@ -440,6 +445,27 @@ public class BottomTabView extends FrameLayout {
         }else {
             mTabIcon.setVisibility(View.VISIBLE);
         }
+    }
+
+    /**
+     * set margin top to unreadText
+     * @param marginTop margin value
+     * [pass-test]
+     *
+     */
+    public void setUnreadTextMarginTop(int marginTop){
+        this.mUnreadTextMarginTop = marginTop;
+        unreadParams.topMargin = dp2px(mContext, marginTop);
+    }
+
+    /**
+     * set margin right to unreadText
+     * @param marginRight margin value
+     * [pass-test]
+     */
+    public void setUnreadTextMarginRight(int marginRight){
+        this.mUnreadTextMarginRight = marginRight;
+        unreadParams.rightMargin = dp2px(mContext, marginRight);
     }
 
     /**
