@@ -48,16 +48,17 @@ public class MainActivity extends AppCompatActivity {
         //tab_home.setSelectedColor(Color.parseColor("#f3566a"));
         //tab_mine.setBubbleBackground(R.drawable.msg_bg);
         //tab_mine.setBubbleSize(28);
-        //tab_mine.setUnreadTextSize(16);
+        tab_mine.setUnreadTextSize(12);
         //tab_mine.setUnreadTextColor(Color.parseColor("#f345f5"));
-        tab_mine.setTabIconOnly(true);
-        tab_home.setTabIconOnly(true);
-        tab_look.setTabIconOnly(true);
+        //tab_mine.setTabIconOnly(true);
+        //tab_home.setTabIconOnly(true);
+        //tab_look.setTabIconOnly(true);
         //tab_mine.setTabTitleOnly(true);
         //tab_home.setTabTitleOnly(true);
         //tab_look.setTabTitleOnly(true);
         tab_mine.setTabTitle("Mine");
-        tab_mine.setUnreadCount(100);
+        //tab_mine.setUnreadCount(100);
+        tab_mine.setSelectedTabIcon(R.drawable.user_selected);
 
 
         bottomBarLayout

@@ -45,9 +45,13 @@ public class BottomTabView extends FrameLayout {
      */
     private int mTabPosition = -1;
     /**
-     * the icon res of tab
+     * the icon res of tab (normal state)
      */
     private @DrawableRes int tabIcon;
+    /**
+     * the selected state icon res of tab
+     */
+    private @DrawableRes int selectedTabIcon;
     /**
      * the size of inner icon
      */
@@ -134,6 +138,11 @@ public class BottomTabView extends FrameLayout {
      * the LayoutParams of bubble view
      */
     private LayoutParams unreadParams;
+
+    /**
+     * weather has different icon res for different states on tabs
+     */
+    private boolean isMultiIcon = false;
 
 
     public BottomTabView(@NonNull Context context) {
@@ -251,10 +260,21 @@ public class BottomTabView extends FrameLayout {
 
             Log.e(TAG, "setSelected: 选中了");
             mTabTitle.setTextColor(mSelectedColor);
+            /**
+             * different icon res for different states
+             */
+            if(isMultiIcon){
+                mTabIcon.setImageResource(selectedTabIcon);
+            }
+
             mTabIcon.setColorFilter(mSelectedColor);
+
+
         }else {
             mTabTitle.setTextColor(mUnSelectedColor);
+            mTabIcon.setImageResource(tabIcon);
             mTabIcon.setColorFilter(mUnSelectedColor);
+
         }
     }
 
@@ -302,6 +322,17 @@ public class BottomTabView extends FrameLayout {
     public void setTabIcon(@DrawableRes int icon){
         this.tabIcon = icon;
         mTabIcon.setImageResource(tabIcon);
+    }
+
+    /**
+     * set the selected state icon res for tab
+     * @param selectedIcon res
+     * [pass-test]
+     */
+    public void setSelectedTabIcon(@DrawableRes int selectedIcon){
+        this.selectedTabIcon = selectedIcon;
+        //mTabIcon.setImageResource(tabIcon);
+        this.isMultiIcon = true;
     }
 
     /**

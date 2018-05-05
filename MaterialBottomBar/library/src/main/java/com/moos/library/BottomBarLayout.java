@@ -94,17 +94,29 @@ public class BottomBarLayout extends LinearLayout {
         setOrientation(VERTICAL);
         mBottomBarLayout = new LinearLayout(context);
         mBottomBarLayout.setBackgroundColor(mTabsBackground);
-        mBottomBarLayout.setOrientation(HORIZONTAL);
-        addView(mBottomBarLayout, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
+
 
         initTab();
     }
 
     private void initTab(){
         /**
-         * todo:如何在布局里设置tab生效并显示？
+         * todo:增加纵向排布方式？
          */
-        mTabParams = new LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT);
+        if(mArrangeType == 1){
+            arrangeType = ArrangeType.HORIZONTAL;
+            mBottomBarLayout.setOrientation(HORIZONTAL);
+
+            mTabParams = new LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT);
+        }else {
+            arrangeType = ArrangeType.VERTICAL;
+            mBottomBarLayout.setOrientation(VERTICAL);
+
+            mTabParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0);
+        }
+        addView(mBottomBarLayout, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
         mTabParams.weight = 1;
     }
 
