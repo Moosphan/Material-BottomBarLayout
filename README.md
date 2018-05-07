@@ -1,7 +1,7 @@
 # Material-BottomBarLayout
 A material navigation bar library which has pretty animations and different ways of arrangement.
 
->![preview](https://github.com/Moosphan/Material-BottomBarLayout/blob/c1c2a24ba500c9090e48df025ab027eaa206e971/MaterialBottomBar/art/bottom_bar.gif)
+>![preview](https://github.com/Moosphan/Material-BottomBarLayout/blob/cacba41fcb1f2694e81b303fe726c4f829f1e6cf/MaterialBottomBar/art/bottom_bar.gif)
 
 ## Usage
 
