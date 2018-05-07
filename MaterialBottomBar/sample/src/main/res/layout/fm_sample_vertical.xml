@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f5f5"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.moos.library.BottomBarLayout
+        android:id="@+id/navigation_bar_vertical"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        app:tabs_arrange_way="vertical"
+        android:elevation="2dp"
+        android:layout_alignParentBottom="true">
+
+    </com.moos.library.BottomBarLayout>
+    <FrameLayout
+        android:id="@+id/fm_content_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/navigation_bar_vertical">
+
+    </FrameLayout>
+</RelativeLayout>

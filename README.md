@@ -1,9 +1,11 @@
 # Material-BottomBarLayout
 A material navigation bar library which has pretty animations and different ways of arrangement.
 
->![preview](https://github.com/Moosphan/Material-BottomBarLayout/blob/c1c2a24ba500c9090e48df025ab027eaa206e971/MaterialBottomBar/art/md_bottom_tab.gif)
+>![preview](https://github.com/Moosphan/Material-BottomBarLayout/blob/c1c2a24ba500c9090e48df025ab027eaa206e971/MaterialBottomBar/art/bottom_bar.gif)
 
 ## Usage
+
+[ ![Download](https://api.bintray.com/packages/moosphon/maven/Material-BottomBarLayout/images/download.svg) ](https://bintray.com/moosphon/maven/Material-BottomBarLayout/_latestVersion)
 
 ### In gradle:
 
