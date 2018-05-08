@@ -79,7 +79,9 @@ private BottomTabView tab_home, tab_look, tab_mine;
     }
 ```
 
-### Bind with ViewPager:
+### More usage
+
+#### 1. Bind with ViewPager:
 
 ```
         ViewPager viewPager = findViewById(R.id.viewPager);
@@ -87,13 +89,17 @@ private BottomTabView tab_home, tab_look, tab_mine;
         bottomBarLayout.bindViewPager(viewPager);
 ```
 
+#### 2. Customize different states of icons
+
+As we all known, the common libraries of `tab` we used can only change the color of different states of tabs. However, sometimes designers want  we use different icon resource ,like ![](http://ovl7kcyr4.bkt.clouddn.com/18-5-8/92537361.jpg) and ![](http://ovl7kcyr4.bkt.clouddn.com/18-5-8/22343788.jpg). I provide 
+
+`setTabIcon`and`setSelectedTabIcon`to set different states of icon resource for tabs.
+
 ### API Details
 
 - **BottomTabView**
 
   Description:the tab item of bottom bar, like `TabItem`.
-
-  ​
 
   The methods document:
 
@@ -119,12 +125,11 @@ private BottomTabView tab_home, tab_look, tab_mine;
   | getTabIconView           | get the tab icon's imageView                                |
   | getTabTextView           | get the tab title view                                      |
   | getTabContainer          | get the container of tab(LinearLayout)                      |
+  | setSelectedTabIcon       | set the selected state icon for tab                         |
 
 - **BottomBarLayout**
 
   Description:the tabs' container, like `TabLayout`.
-
-  ​
 
   The methods document:
 
@@ -138,7 +143,9 @@ private BottomTabView tab_home, tab_look, tab_mine;
   | setArrangeType                     | the way of tabs arranges                  |
 
 
+## ChangeLogs
 
+- **V1.0.1**: add the `vertical` style  to show the tabs and you can customize your own icon res for selected state of tabs.
 
 ## To-do
 
