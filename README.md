@@ -10,7 +10,7 @@ A material navigation bar library which has pretty animations and different ways
 ### In gradle:
 
 ```
-compile 'com.moos:Material-BottomBarLayout:1.0'
+compile 'com.moos:Material-BottomBarLayout:1.0.1'
 ```
 
 ### In xml:
@@ -135,17 +135,18 @@ private BottomTabView tab_home, tab_look, tab_mine;
   | getTabCount                        | get the count of tabs in container        |
   | bindViewPager(ViewPager viewPager) | bind the viewPager and scroll with it     |
   | create                             | set call back of tab's selected operation |
+  | setArrangeType                     | the way of tabs arranges                  |
 
 
 
 
 ## To-do
 
-- support `horizontal` and `vertical` style.
-- more animations for tabs.
-- bind with viewpager or other slide views.
-- change bottomBarLayout background when selected.
-- support different states of tab icons
+- [x] support `horizontal` and `vertical` style.
+- [ ] more animations for tabs.
+- [x] bind with viewpager or other slide views.
+- [ ] change bottomBarLayout background when selected.
+- [x] support different states of tab icons
 
 ## About me
 
