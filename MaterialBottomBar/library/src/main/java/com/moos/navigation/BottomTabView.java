@@ -258,7 +258,7 @@ public class BottomTabView extends FrameLayout {
             Log.e(TAG, "setSelected: 选中了");
             mTabTitle.setTextColor(mSelectedColor);
             // different icon res for different states
-            if(isMultiIcon){
+            if(isMultiIcon) {
                 // if we have provide both `selected` and `unselected` icons,
                 // we should close the icon #setColorFilter.
                 // To prevent changing the color of icons we don't want.
@@ -271,7 +271,9 @@ public class BottomTabView extends FrameLayout {
         }else {
             mTabTitle.setTextColor(mUnSelectedColor);
             mTabIcon.setImageResource(tabIcon);
-            mTabIcon.setColorFilter(mUnSelectedColor);
+            if(!isMultiIcon) {
+                mTabIcon.setColorFilter(mUnSelectedColor);
+            }
 
         }
     }
