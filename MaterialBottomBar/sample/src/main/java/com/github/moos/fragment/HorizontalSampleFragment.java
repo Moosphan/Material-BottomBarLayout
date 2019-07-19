@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import com.github.moos.adapter.CardViewPagerAdapter;
 import com.github.moos.R;
 import com.github.moos.bean.CardBean;
-import com.moos.library.BottomBarLayout;
-import com.moos.library.BottomTabView;
+import com.moos.navigation.BottomBarLayout;
+import com.moos.navigation.BottomTabView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +21,6 @@ import java.util.List;
  */
 public class HorizontalSampleFragment extends Fragment{
 
-    private BottomTabView tab_home, tab_look, tab_mine;
-    private ViewPager viewPager;
     private List<CardBean> data = new ArrayList<>();
     public static final String TAG = "HorizontalStyle";
 
@@ -42,16 +40,21 @@ public class HorizontalSampleFragment extends Fragment{
 
     private void initView(View view){
         BottomBarLayout bottomBarLayout = view.findViewById(R.id.bottom_bar_horizontal);
-        viewPager = view.findViewById(R.id.viewPager);
-        tab_home = new BottomTabView(getContext());
+        ViewPager viewPager = view.findViewById(R.id.viewPager);
+        bottomBarLayout.animationEnable(false);
+
+        BottomTabView tab_home = new BottomTabView(getContext());
         tab_home.setTabIcon(R.drawable.home);
         tab_home.setTabTitle("Home");
+        //tab_home.setUnselectedColor(Color.parseColor("#f65656"));
 
-        tab_look = new BottomTabView(getContext());
+        BottomTabView tab_look = new BottomTabView(getContext());
         tab_look.setTabIcon(R.drawable.activity);
         tab_look.setTabTitle("Discover");
+        //tab_look.setUnselectedColor(Color.parseColor("#f65656"));
 
-        tab_mine = new BottomTabView(getContext());
+
+        BottomTabView tab_mine = new BottomTabView(getContext());
         tab_mine.setTabIcon(R.drawable.user);
         //tab_mine.setTabIconSize(29); // efficient
         //tab_mine.setTabPadding(12);
@@ -69,7 +72,7 @@ public class HorizontalSampleFragment extends Fragment{
         //tab_look.setTabTitleOnly(true);
         tab_mine.setTabTitle("Mine");
         tab_mine.setUnreadCount(100);
-        tab_mine.setSelectedTabIcon(R.drawable.user_selected);
+        //tab_mine.setSelectedTabIcon(R.drawable.user_selected);
 
 
         bottomBarLayout

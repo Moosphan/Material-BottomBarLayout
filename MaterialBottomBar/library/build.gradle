@@ -6,7 +6,7 @@ android {
 
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -38,7 +38,7 @@ publish {
     userOrg = 'moosphon'//bintray-username
     groupId = 'com.moos'//group name
     artifactId = 'Material-BottomBarLayout'//项目名称
-    publishVersion = '1.0.1'//version
+    publishVersion = '1.0.5'//version
     desc = 'This is a pretty and simple used library for navigation pages on android'
     website = 'https://github.com/Moosphan/Material-BottomBarLayout'//website
 }

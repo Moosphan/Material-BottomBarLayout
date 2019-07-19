@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.moos.R;
-import com.moos.library.BottomBarLayout;
-import com.moos.library.BottomTabView;
+import com.moos.navigation.BottomBarLayout;
+import com.moos.navigation.BottomTabView;
 
 /**
  * A sample of Vertical style navigation bar.

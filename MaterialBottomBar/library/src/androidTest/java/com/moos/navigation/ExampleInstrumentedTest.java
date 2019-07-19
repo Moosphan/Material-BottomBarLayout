@@ -1,4 +1,4 @@
-package com.moos.library;
+package com.moos.navigation;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,4 +1,5 @@
-package com.moos.library;
+package com.moos.navigation;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -7,7 +8,6 @@ import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -24,6 +24,8 @@ import static android.support.v4.view.ViewPager.SCROLL_STATE_SETTLING;
 /**
  * Created by moos on 2018/4/27.
  * <p>the layout to contain the tabs, it support the mixed views</p>
+ * GitHub: https://github.com/Moosphan
+ * Updated on 2019/07/19
  */
 
 public class BottomBarLayout extends LinearLayout {
@@ -65,6 +67,10 @@ public class BottomBarLayout extends LinearLayout {
      * the viewPager to bind
      */
     private ViewPager mViewPager;
+    /**
+     * apply animation of {@link BottomTabView} or not.
+     */
+    private Boolean animationEnable = true;
 
     private BottomBarLayoutOnPageChangeListener mPageChangeListener;
 
@@ -101,9 +107,6 @@ public class BottomBarLayout extends LinearLayout {
     }
 
     private void initTab(){
-        /**
-         * todo:增加纵向排布方式？
-         */
         if(mArrangeType == 1){
             arrangeType = ArrangeType.HORIZONTAL;
             mBottomBarLayout.setOrientation(HORIZONTAL);
@@ -136,17 +139,18 @@ public class BottomBarLayout extends LinearLayout {
                 if(position == mCurrentPosition){
                     mListener.onTabReselected(tab);
                 }else {
-                    Log.e(TAG, "onClick: 被点击选中了" );
                     mListener.onTabSelected(tab);
                     tab.setSelected(true);
-                    /**
-                     * use the animation
-                     */
-                    startTabJumpAnimation(tab.getTabContainer(), 300);
+                    // apply the animation, now just support default animation -> Scale Animation
+                    if(animationEnable) {
+                        // start animation of current selected tab.
+                        startTabJumpAnimation(tab.getTabContainer(), 300);
+                        // start animation of previous selected tab to restore it.
+                        recoverToOrigin(mTabs.get(mCurrentPosition).getTabContainer(), 300);
+                    }
                     if(mViewPager!=null){
                         mViewPager.setCurrentItem(position);
                     }
-                    stopTabJumpAnimation(mTabs.get(mCurrentPosition).getTabContainer(), 300);
                     mListener.onTabUnselected(mTabs.get(mCurrentPosition));
                     mTabs.get(mCurrentPosition).setSelected(false);
                     mCurrentPosition = position;
@@ -167,7 +171,7 @@ public class BottomBarLayout extends LinearLayout {
      * batch add the tabs into container
      * @param tabs {@link BottomTabView} many tabs
      */
-    public void addTabs(BottomTabView... tabs){
+    public void addTabs(List<BottomTabView> tabs){
         for(BottomTabView tab : tabs){
             addTab(tab);
         }
@@ -197,7 +201,7 @@ public class BottomBarLayout extends LinearLayout {
 
     /**
      * get the count of tabs
-     * @return
+     * @return tab counts in {@link BottomBarLayout}
      */
     public int getTabCount(){
         return mTabs!=null ? mTabs.size() : 0;
@@ -206,11 +210,19 @@ public class BottomBarLayout extends LinearLayout {
     /**
      * set call back of tab's selected operation
      * @param onTabSelectedListener call back
-     * @return
+     * @return this
      */
     public BottomBarLayout create(OnTabSelectedListener onTabSelectedListener) {
         mListener = onTabSelectedListener;
         return this;
+    }
+
+    /**
+     * apply the animation of {@link BottomTabView} or not.
+     * @param isSupport whether support animation of tabs.
+     */
+    public void animationEnable(Boolean isSupport) {
+        this.animationEnable = isSupport;
     }
 
     private void startTabJumpAnimation(LinearLayout tab, int duration){
@@ -220,7 +232,7 @@ public class BottomBarLayout extends LinearLayout {
                 .start();
     }
 
-    private void stopTabJumpAnimation(LinearLayout tab, int duration){
+    private void recoverToOrigin(LinearLayout tab, int duration){
         tab.animate().scaleX(1f).scaleY(1f)
                 .setDuration(duration)
                 .setInterpolator(new AccelerateDecelerateInterpolator())

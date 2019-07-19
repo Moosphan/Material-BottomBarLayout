@@ -9,13 +9,13 @@ A material navigation bar library which has pretty animations and different ways
 
 ### In gradle:
 
-```
-compile 'com.moos:Material-BottomBarLayout:1.0.1'
+```groovy
+compile 'com.moos:Material-BottomBarLayout:1.0.5'
 ```
 
 ### In xml:
 
-```
+```xml
 <com.moos.library.BottomBarLayout
     android:id="@+id/bottom_bar"
     android:layout_width="match_parent"
@@ -31,7 +31,7 @@ compile 'com.moos:Material-BottomBarLayout:1.0.1'
 
 ### In java:
 
-```
+```java
 private BottomTabView tab_home, tab_look, tab_mine;
 ......
 
@@ -83,7 +83,7 @@ private BottomTabView tab_home, tab_look, tab_mine;
 
 #### 1. Bind with ViewPager:
 
-```
+```java
         ViewPager viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(new CardViewPagerAdapter(data));
         bottomBarLayout.bindViewPager(viewPager);
@@ -91,15 +91,13 @@ private BottomTabView tab_home, tab_look, tab_mine;
 
 #### 2. Customize different states of icons
 
-As we all known, the common libraries of `tab` we used can only change the color of different states of tabs. However, sometimes designers want  we use different icon resource ,like ![](http://ovl7kcyr4.bkt.clouddn.com/18-5-8/92537361.jpg) and ![](http://ovl7kcyr4.bkt.clouddn.com/18-5-8/22343788.jpg). I provide 
-
-`setTabIcon`and`setSelectedTabIcon`to set different states of icon resource for tabs.
+As we all known, the common libraries of `tab` we used can only change the color of different states of tabs. However, sometimes designers want  we use different icon resource , like ![](http://ovl7kcyr4.bkt.clouddn.com/18-5-8/92537361.jpg) and ![](http://ovl7kcyr4.bkt.clouddn.com/18-5-8/22343788.jpg). I provide `setTabIcon` and `setSelectedTabIcon` to set different states of icon resource for tabs.
 
 ### API Details
 
 - **BottomTabView**
 
-  Description:the tab item of bottom bar, like `TabItem`.
+  Description：the tab item of bottom bar, like `TabItem`.
 
   The methods document:
 
@@ -129,7 +127,7 @@ As we all known, the common libraries of `tab` we used can only change the color
 
 - **BottomBarLayout**
 
-  Description:the tabs' container, like `TabLayout`.
+  Description：the tabs' container, like `TabLayout`.
 
   The methods document:
 
@@ -145,7 +143,22 @@ As we all known, the common libraries of `tab` we used can only change the color
 
 ## ChangeLogs
 
-- **V1.0.1**: add the `vertical` style  to show the tabs and you can customize your own icon res for selected state of tabs.
+- #### V1.0.1
+
+  Add the `vertical` style  to show the tabs and you can customize your own icon res for selected state of tabs.
+
+- #### V1.0.2
+
+  Change the `minSdkVersion` down to 16, avoid of the multiple errors.
+
+- #### V1.0.3
+
+   Solve the problem that `setUnselectColor` method not works in initialization.
+
+- #### V1.0.5
+
+  1. You can disable  animations of  tabs.
+  2. When we customize our `selectedIcon` , we should disable the icon color setting.
 
 ## To-do
 
@@ -154,22 +167,13 @@ As we all known, the common libraries of `tab` we used can only change the color
 - [x] bind with viewpager or other slide views.
 - [ ] change bottomBarLayout background when selected.
 - [x] support different states of tab icons
+- [ ] Not limit default icon size any more, change it's size to `wrap_content`.
 
 ## About me
 
 Welcome to improve it with me and give me some issues.
 
-Blog:<http://moos.club/>
-
-E-mail:moosphon@gmail.com
-
-Twitter:[![Twitter](https://img.shields.io/twitter/url/https/github.com/Moosphan/Material-ProgressView.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FMoosphan%2FMaterial-ProgressView)
-
-Buy  me a coffee:
-
-
-
-![coffee](https://github.com/Moosphan/Material-ProgressView/blob/master/MaterialProgressView-master/image/a_coffee.png)
+E-mail：moosphon@gmail.com
 
 
 ## License

@@ -1,4 +1,4 @@
-package com.moos.library;
+package com.moos.navigation;
 
 import org.junit.Test;
 

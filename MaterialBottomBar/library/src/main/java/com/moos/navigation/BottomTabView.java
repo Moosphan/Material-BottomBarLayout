@@ -1,4 +1,4 @@
-package com.moos.library;
+package com.moos.navigation;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -20,8 +20,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
- * Created by moos on 2018/4/26.
+ * GitHub: https://github.com/Moosphan
+ * Created by moosphon on 2018/4/26.
  * <p>the tab in bottom bar layout</p>
+ *
+ * Updated by moosphon on 2019/7/19
+ *
  * todo:使用建造者模式创建tab，并将setLayoutParams放在最后的create方法里调用
  */
 
@@ -193,9 +197,7 @@ public class BottomTabView extends FrameLayout {
     private void initView(Context context){
 
 
-        /**
-         * init the tab container
-         */
+        // init the tab container
         tabContainer = new LinearLayout(context);
         tabContainer.setOrientation(LinearLayout.VERTICAL);
         tabContainer.setGravity(Gravity.CENTER);
@@ -203,9 +205,7 @@ public class BottomTabView extends FrameLayout {
         containerParams.gravity = Gravity.CENTER;
         tabContainer.setPadding(0, mTabPadding, 0, mTabPadding);
         tabContainer.setLayoutParams(containerParams);
-        /**
-         * init and add the tab icon into container
-         */
+        // init and add the tab icon into container
         mTabIcon = new ImageView(context);
         iconParams = new LinearLayout.LayoutParams(dp2px(context, mTabIconSize), dp2px(context, mTabIconSize));
         mTabIcon.setImageResource(tabIcon);
@@ -215,9 +215,8 @@ public class BottomTabView extends FrameLayout {
         if(isTitleOnly){
             mTabIcon.setVisibility(View.GONE);
         }
-        /**
-         * init and add the tab text into container
-         */
+
+        // init and add the tab text into container
         mTabTitle = new TextView(context);
         titleParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         titleParams.topMargin = dp2px(context, 2);
@@ -231,9 +230,7 @@ public class BottomTabView extends FrameLayout {
         }
 
         addView(tabContainer);
-        /**
-         * init and add the unread text into container
-         */
+        // init and add the unread text into container
         mTabUnreadCount = new TextView(context);
         mTabUnreadCount.setTextSize( mUnreadTextSize);
         mTabUnreadCount.setTextColor(mUnreadTextColor);
@@ -260,14 +257,15 @@ public class BottomTabView extends FrameLayout {
 
             Log.e(TAG, "setSelected: 选中了");
             mTabTitle.setTextColor(mSelectedColor);
-            /**
-             * different icon res for different states
-             */
+            // different icon res for different states
             if(isMultiIcon){
+                // if we have provide both `selected` and `unselected` icons,
+                // we should close the icon #setColorFilter.
+                // To prevent changing the color of icons we don't want.
                 mTabIcon.setImageResource(selectedTabIcon);
+            }else {
+                mTabIcon.setColorFilter(mSelectedColor);
             }
-
-            mTabIcon.setColorFilter(mSelectedColor);
 
 
         }else {
@@ -315,7 +313,7 @@ public class BottomTabView extends FrameLayout {
     }
 
     /**
-     * set the icon res for tab
+     * set the icon (unselected state) res for tab.
      * @param icon res
      * [pass-test]
      */
@@ -352,9 +350,7 @@ public class BottomTabView extends FrameLayout {
      */
     public void setTabIconSize(int size){
         this.mTabIconSize = size;
-        /**
-         * refresh the view
-         */
+        // refresh the view
         iconParams.width = dp2px(mContext, size);
         iconParams.height = dp2px(mContext, size);
 
@@ -382,6 +378,11 @@ public class BottomTabView extends FrameLayout {
     }
 
     /**
+     * todo:developer can choose weather customize color or use the default color of icons.
+     */
+
+
+    /**
      * set selected color for tab
      * @param selectColor selected state color
      * [pass-test]
@@ -398,6 +399,9 @@ public class BottomTabView extends FrameLayout {
      */
     public void setUnselectedColor(@ColorInt int unSelectColor){
         this.mUnSelectedColor = unSelectColor;
+        if(!isSelected()){
+            mTabIcon.setColorFilter(mUnSelectedColor);
+        }
     }
 
     /**
