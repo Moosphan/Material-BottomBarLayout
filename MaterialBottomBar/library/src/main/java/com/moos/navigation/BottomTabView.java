@@ -144,7 +144,7 @@ public class BottomTabView extends FrameLayout {
     private LayoutParams unreadParams;
 
     /**
-     * weather has different icon res for different states on tabs
+     * whether has different icon res for different states on tabs
      */
     private boolean isMultiIcon = false;
 
@@ -210,6 +210,7 @@ public class BottomTabView extends FrameLayout {
         iconParams = new LinearLayout.LayoutParams(dp2px(context, mTabIconSize), dp2px(context, mTabIconSize));
         mTabIcon.setImageResource(tabIcon);
         mTabIcon.setLayoutParams(iconParams);
+        // if apply this, the `isMultiIcon` still can't work.
         mTabIcon.setColorFilter(mUnSelectedColor);
         tabContainer.addView(mTabIcon);
         if(isTitleOnly){
@@ -333,6 +334,9 @@ public class BottomTabView extends FrameLayout {
         this.selectedTabIcon = selectedIcon;
         //mTabIcon.setImageResource(tabIcon);
         this.isMultiIcon = true;
+        // fix the problem that unselected icons still have color filter effect.
+        // So use this to remove color filter effect.
+        mTabIcon.setColorFilter(0);
     }
 
     /**
@@ -391,7 +395,6 @@ public class BottomTabView extends FrameLayout {
      */
     public void setSelectedColor(@ColorInt int selectColor){
         this.mSelectedColor = selectColor;
-
     }
 
     /**
@@ -401,7 +404,7 @@ public class BottomTabView extends FrameLayout {
      */
     public void setUnselectedColor(@ColorInt int unSelectColor){
         this.mUnSelectedColor = unSelectColor;
-        if(!isSelected()){
+        if(!isSelected() && !isMultiIcon){
             mTabIcon.setColorFilter(mUnSelectedColor);
         }
     }

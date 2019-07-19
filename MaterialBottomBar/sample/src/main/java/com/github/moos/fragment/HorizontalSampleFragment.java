@@ -44,18 +44,21 @@ public class HorizontalSampleFragment extends Fragment{
         bottomBarLayout.animationEnable(false);
 
         BottomTabView tab_home = new BottomTabView(getContext());
-        tab_home.setTabIcon(R.drawable.home);
+        tab_home.setTabIcon(R.drawable.work_edit_sticker_unselected_state);
+        tab_home.setSelectedTabIcon(R.drawable.work_edit_sticker_selected_state);
         tab_home.setTabTitle("Home");
         //tab_home.setUnselectedColor(Color.parseColor("#f65656"));
 
         BottomTabView tab_look = new BottomTabView(getContext());
-        tab_look.setTabIcon(R.drawable.activity);
+        tab_look.setTabIcon(R.drawable.work_edit_words_unselected_state);
+        tab_look.setSelectedTabIcon(R.drawable.work_edit_words_selected_state);
         tab_look.setTabTitle("Discover");
         //tab_look.setUnselectedColor(Color.parseColor("#f65656"));
 
 
         BottomTabView tab_mine = new BottomTabView(getContext());
-        tab_mine.setTabIcon(R.drawable.user);
+        tab_mine.setTabIcon(R.drawable.work_edit_music_unselected_state);
+        tab_mine.setSelectedTabIcon(R.drawable.work_edit_music_selected_state);
         //tab_mine.setTabIconSize(29); // efficient
         //tab_mine.setTabPadding(12);
         //tab_mine.setTabTitleSize(16);

@@ -160,6 +160,10 @@ As we all known, the common libraries of `tab` we used can only change the color
   1. You can disable  animations of  tabs.
   2. When we customize our `selectedIcon` , we should disable the icon color setting.
 
+- #### V1.0.7
+
+  Fix the problem that unselected icons still have color filter effect.
+
 ## To-do
 
 - [x] support `horizontal` and `vertical` style.
